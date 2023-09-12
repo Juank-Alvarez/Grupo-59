@@ -3,8 +3,13 @@ package accesoADatos;
 
 import entidades.Alumno;
 import java.sql.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 
 
@@ -80,7 +85,35 @@ public class AlumnoData {
         }
         
     }
-    public List<Alumno> listarAlumnos(){
+    
+    public Alumno buscarAlumno(int id){
+        String sql="SELECT dni, apellido, nombre, fechaNacimiento FROM alumno WHERE idAlumno = ? AND estado = 1";
+        Alumno alumno= null;
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1,id);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+                alumno=new Alumno();
+                alumno.setIdAlumno(id);
+                alumno.setDni(rs.getInt("dni"));
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
+                alumno.setActivo(true);
+            }else {
+                JOptionPane.showMessageDialog(null, "No existe ese alumno");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se pudo acceder");
+        }
+        return alumno;
+        
+    }
+    
+        public List<Alumno> listarAlumnos(){
         String sql="SELECT idAlumno, dni, apellido, nombre, fechaNacimiento From alumno WHERE estado = 1";
         ArrayList<Alumno> alumnos=new ArrayList<>();
         try{
@@ -102,6 +135,6 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
         }
         return alumnos;
+        }
         
-    }
 }
