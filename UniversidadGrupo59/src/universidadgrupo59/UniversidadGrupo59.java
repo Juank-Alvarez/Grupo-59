@@ -16,7 +16,8 @@ public class UniversidadGrupo59 {
 //        alu.guardarAlumno(Juan);
 //        alu.modificarAlumno(Juan);
 //        alu.eliminarAlumno(1);
-        Alumno alumnoEncontrado=alu.buscarAlumno(1);
+//        Alumno alumnoEncontrado=alu.buscarAlumno(1);
+        Alumno alumnoEncontrado=alu.buscarAlumnoPorDni(12312312);
         if(alumnoEncontrado!=null){
             System.out.println("dni "+alumnoEncontrado.getDni());
             System.out.println("apellido "+alumnoEncontrado.getApellido());
