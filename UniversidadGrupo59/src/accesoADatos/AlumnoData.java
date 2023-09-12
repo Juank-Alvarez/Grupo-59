@@ -62,7 +62,7 @@ public class AlumnoData {
             if(exito==1){
                 JOptionPane.showMessageDialog(null, "Alumno modificado");
             }else{
-                JOptionPane.showMessageDialog(null, "Alumno no modificado");
+                JOptionPane.showMessageDialog(null, "Alumno no se pudo modificar");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder");
