@@ -83,4 +83,6 @@ public class Alumno {
     public String toString() {
         return "Alumno{" + "idAlumno=" + idAlumno + ", dni=" + dni + ", nombre=" + nombre + ", Apellido=" + Apellido + '}';
     }
+    
+    //constructor
 }
