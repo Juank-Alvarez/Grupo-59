@@ -79,6 +79,8 @@ public class Alumno {
         this.activo = activo;
     }
 
+    // toString
+    
     @Override
     public String toString() {
         return "Alumno{" + "idAlumno=" + idAlumno + ", dni=" + dni + ", nombre=" + nombre + ", Apellido=" + Apellido + '}';
