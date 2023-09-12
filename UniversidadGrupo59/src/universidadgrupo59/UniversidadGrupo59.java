@@ -22,5 +22,6 @@ public class UniversidadGrupo59 {
             System.out.println("apellido "+alumnoEncontrado.getApellido());
             System.out.println("nombre "+alumnoEncontrado.getNombre());
         }
+        
     }
 }
