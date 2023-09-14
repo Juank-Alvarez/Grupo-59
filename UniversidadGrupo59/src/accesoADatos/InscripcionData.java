@@ -36,13 +36,14 @@ public void guardarIncripcripcion(Inscripcion insc){
                 }
             }
             
+<<<<<<< HEAD
             
+=======
+            ps.close();  
+>>>>>>> 662efff019926df9656fbe3254be49aaf4dfcf27
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se pudo acceder");
-            
-            
-            
-            
+            JOptionPane.showMessageDialog(null, "No se pudo acceder al guardado");
+     
         }
      
 }
