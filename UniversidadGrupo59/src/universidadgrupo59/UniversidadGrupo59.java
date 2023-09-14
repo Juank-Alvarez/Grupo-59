@@ -3,8 +3,10 @@ package universidadgrupo59;
 
 import accesoADatos.AlumnoData;
 import accesoADatos.Conexion;
+import accesoADatos.InscripcionData;
 import accesoADatos.MateriaData;
 import entidades.Alumno;
+import entidades.Inscripcion;
 import entidades.Materia;
 import java.sql.Connection;
 import java.time.LocalDate;
@@ -20,7 +22,7 @@ public class UniversidadGrupo59 {
 //        alu.modificarAlumno(Juan);
 //        alu.eliminarAlumno(1);
 //        Alumno alumnoEncontrado=alu.buscarAlumno(1);
-        Alumno alumnoEncontrado=alu.buscarAlumnoPorDni(12312312);
+       // Alumno alumnoEncontrado=alu.buscarAlumnoPorDni(12312312);
       /*  if(alumnoEncontrado!=null){
             System.out.println("dni "+alumnoEncontrado.getDni());
             System.out.println("apellido "+alumnoEncontrado.getApellido());
@@ -35,17 +37,25 @@ public class UniversidadGrupo59 {
         //agregar materias
         
         Materia Historia=new Materia ("Historia",2,true);
-        Materia Matemarica=new Materia ("Matematica",3,true);
+        Materia Matematica=new Materia ("Matematica",3,true);
         Materia Dibujo=new Materia ("Dibujo",2,true);
         
         
         
         MateriaData mat = new MateriaData();
-        mat.guardarMatera(Matemarica);
-        mat.guardarMatera(Historia);
-        mat.guardarMatera(Dibujo);
+     //   mat.guardarMatera(Matemarica);
+     //   mat.guardarMatera(Historia);
+     //  mat.guardarMatera(Dibujo);
 
-        
+
+        InscripcionData id = new InscripcionData();
+
+        Inscripcion insc = new Inscripcion(Juan,Matematica, 7);
+
+    id.guardarIncripcripcion(insc);
+
+
+
         }  
         
         
