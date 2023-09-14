@@ -32,7 +32,7 @@ public class UniversidadGrupo59 {
        // alu.guardarAlumno(Pedro);
         //alu.guardarAlumno(Manuel);
       
-        
+        //agregar materias
         
         Materia Historia=new Materia ("Historia",2,true);
         Materia Matemarica=new Materia ("Matematica",3,true);
@@ -46,7 +46,7 @@ public class UniversidadGrupo59 {
         mat.guardarMatera(Dibujo);
 
         
-        }
+        }  
         
         
        
