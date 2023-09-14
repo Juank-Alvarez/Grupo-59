@@ -49,4 +49,26 @@ public void guardarIncripcripcion(Inscripcion insc){
      
 }
 
+public void actualizarNota (int idAlumno,int idMateria,double nota){
+
+String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? and idMateria = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+        ps.setDouble(1, nota);
+        ps.setInt(2, idAlumno);
+        ps.setInt(3, idMateria);
+        int filas = ps.executeUpdate();
+        
+        if(filas>0){
+            JOptionPane.showMessageDialog(null,"Nota Actualizada");
+        }
+        ps.close();
+        
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al aceder a la tabla ");
+        }
+
+}
+
 }
