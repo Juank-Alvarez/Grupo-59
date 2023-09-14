@@ -37,7 +37,7 @@ public class UniversidadGrupo59 {
         //agregar materias
         Materia Historia = new Materia(1,"Historia", 2, true);
         Materia Matematica = new Materia(2,"Matematica", 3, true);
- //       Materia Dibujo = new Materia("Dibujo", 2, true);
+        Materia Dibujo = new Materia(3,"Dibujo", 2, true);
  //       MateriaData mat = new MateriaData();
         //   mat.guardarMatera(Matemarica);
         //   mat.guardarMatera(Historia);
