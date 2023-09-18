@@ -17,7 +17,7 @@ public class UniversidadGrupo59 {
     public static void main(String[] args) {
 
         Alumno Juan = new Alumno(1, 12312312, "Luna", "Juan Pedro", LocalDate.of(1980, 4, 25), true);
- //       AlumnoData alu = new AlumnoData();
+        //       AlumnoData alu = new AlumnoData();
         //    alu.guardarAlumno(Juan);
 //        alu.modificarAlumno(Juan);
 //        alu.eliminarAlumno(1);
@@ -33,12 +33,11 @@ public class UniversidadGrupo59 {
 //        Alumno Manuel = new Alumno(37548159, "Ramirez", "Jose", LocalDate.of(1987, 9, 13), true);
         // alu.guardarAlumno(Pedro);
         //alu.guardarAlumno(Manuel);
-
         //agregar materias
-        Materia Historia = new Materia(1,"Historia", 2, true);
-        Materia Matematica = new Materia(2,"Matematica", 3, true);
-        Materia Dibujo = new Materia(3,"Dibujo", 2, true);
- //       MateriaData mat = new MateriaData();
+        Materia Historia = new Materia(1, "Historia", 2, true);
+        Materia Matematica = new Materia(2, "Matematica", 3, true);
+        Materia Dibujo = new Materia(3, "Dibujo", 2, true);
+        //       MateriaData mat = new MateriaData();
         //   mat.guardarMatera(Matemarica);
         //   mat.guardarMatera(Historia);
         //   mat.guardarMatera(Dibujo);
@@ -47,8 +46,10 @@ public class UniversidadGrupo59 {
 
         Inscripcion insc = new Inscripcion(Juan, Matematica, 7);
 
-        id.guardarIncripcripcion(insc);
-
+        //id.guardarIncripcripcion(insc);
+        //id.actualizarNota(1, 2, 9);
+          id.borrarInscripcionMateriaAlumno(1, 2);
+          
     }
 }
 

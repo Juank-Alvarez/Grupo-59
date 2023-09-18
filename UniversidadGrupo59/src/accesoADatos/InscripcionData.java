@@ -69,4 +69,27 @@ String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? and idMateria =
 
 }
 
+public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
+    
+    String sql = "DELETE FROM inscripcion WHERE idAlumno = ? and idMateria = ?";
+    
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, idAlumno);
+        ps.setInt(2, idMateria);
+        
+        int filas=ps.executeUpdate(); 
+        if (filas>0){
+            
+            JOptionPane.showMessageDialog(null,"Inscripcion borrada ");
+        }
+        
+         ps.close();
+        
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null,"Error al aceder a la tabla ");
+        }
+}
+
+
 }
