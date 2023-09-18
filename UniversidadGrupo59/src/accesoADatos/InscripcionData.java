@@ -119,4 +119,5 @@ public class InscripcionData {
         }
         return cursadas;
     }
+    
 }
