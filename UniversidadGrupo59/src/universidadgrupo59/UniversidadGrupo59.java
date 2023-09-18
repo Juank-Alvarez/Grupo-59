@@ -34,21 +34,26 @@ public class UniversidadGrupo59 {
         // alu.guardarAlumno(Pedro);
         //alu.guardarAlumno(Manuel);
         //agregar materias
-        Materia Historia = new Materia(1, "Historia", 2, true);
-        Materia Matematica = new Materia(2, "Matematica", 3, true);
-        Materia Dibujo = new Materia(3, "Dibujo", 2, true);
+//        Materia Historia = new Materia(1, "Historia", 2, true);
+//        Materia Matematica = new Materia(2, "Matematica", 3, true);
+//        Materia Dibujo = new Materia(3, "Dibujo", 2, true);
         //       MateriaData mat = new MateriaData();
         //   mat.guardarMatera(Matemarica);
         //   mat.guardarMatera(Historia);
         //   mat.guardarMatera(Dibujo);
 
         InscripcionData id = new InscripcionData();
-
-        Inscripcion insc = new Inscripcion(Juan, Matematica, 7);
+//
+//        Inscripcion insc = new Inscripcion(Juan, Matematica, 7);
 
         //id.guardarIncripcripcion(insc);
         //id.actualizarNota(1, 2, 9);
-          id.borrarInscripcionMateriaAlumno(1, 2);
+//          id.borrarInscripcionMateriaAlumno(1, 2);
+    for(Inscripcion inscripcion:id.obtenerInscripciones()){
+        System.out.println("id "+inscripcion.getIdInscripcion());
+        System.out.println("Apellido "+inscripcion.getAlumno().getApellido());
+        System.out.println("Materia "+inscripcion.getMateria().getNombre());
+    }
           
     }
 }
