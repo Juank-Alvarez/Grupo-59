@@ -6,7 +6,7 @@ public class Inscripcion {
     private int idInscripcion;
     private Alumno alumno;
     private Materia materia;
-    double nota;
+    private double nota;
 
     public Inscripcion() {
     }
