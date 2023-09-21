@@ -171,7 +171,7 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
         if(mate!=null){
             jtNombre.setText(mate.getNombre());
             jtAño.setText(mate.getAnioMateria()+"");
-            if(mate.isActivo()==true){
+            if(mate.isActivo()){
                 jrbEstado.setSelected(true);
             }else jrbEstado.setSelected(false);
         }

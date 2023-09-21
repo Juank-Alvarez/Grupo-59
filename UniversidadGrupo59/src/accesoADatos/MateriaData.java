@@ -37,22 +37,21 @@ public class MateriaData {
     }
     
     public Materia buscarMateria(int id){
-        String sql="SELECT nombre, año FROM `materia` WHERE idMateria= ?";
+        String sql="SELECT nombre, año, estado FROM `materia` WHERE idMateria= ? ";
         Materia materia=null;
         
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs=ps.executeQuery();
-            materia.setActivo(false);
             if(rs.next()){
                 materia=new Materia();
                 materia.setIdMateria(id);
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnioMateria(rs.getInt("año"));
-                
+                materia.setActivo(rs.getBoolean("estado"));
             }else {
-//                JOptionPane.showMessageDialog(null, "No existe esa materia");
+                JOptionPane.showMessageDialog(null, "No existe esa materia");
             }
             ps.close();
         } catch (SQLException ex) {
