@@ -4,17 +4,21 @@
  */
 package Vistas;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Juan
  */
 public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
+    private DefaultTableModel model= new DefaultTableModel();
 
     /**
      * Creates new form ManejoDeInscripciones
      */
     public ManejoDeInscripciones() {
         initComponents();
+        armarCabecera();
     }
 
     /**
@@ -32,7 +36,7 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtIncripciones = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -50,7 +54,7 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
 
         jRadioButton2.setText("jRadioButton2");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtIncripciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -61,7 +65,7 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtIncripciones);
 
         jButton1.setText("Inscribir");
 
@@ -139,6 +143,16 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jtIncripciones;
     // End of variables declaration//GEN-END:variables
+
+
+private void armarCabecera (){
+    
+    model.addColumn("Id");
+    model.addColumn("Nombre");
+    model.addColumn("Año");
+    jtIncripciones.setModel(model);
+}
+
 }

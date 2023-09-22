@@ -37,7 +37,7 @@ public class MateriaData {
     }
     
     public Materia buscarMateria(int id){
-        String sql="SELECT nombre, año FROM `materia` WHERE idMateria= ? AND estado = 1";
+        String sql="SELECT nombre, año, estado FROM `materia` WHERE idMateria= ? ";
         Materia materia=null;
         
         try {
@@ -49,7 +49,7 @@ public class MateriaData {
                 materia.setIdMateria(id);
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnioMateria(rs.getInt("año"));
-                materia.setActivo(true);
+                materia.setActivo(rs.getBoolean("estado"));
             }else {
                 JOptionPane.showMessageDialog(null, "No existe esa materia");
             }
