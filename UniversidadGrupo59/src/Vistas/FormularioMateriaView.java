@@ -5,6 +5,7 @@ import accesoADatos.Conexion;
 import accesoADatos.MateriaData;
 import entidades.Materia;
 import java.sql.Connection;
+import javax.swing.WindowConstants;
 
 public class FormularioMateriaView extends javax.swing.JInternalFrame {
 
@@ -82,6 +83,11 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
         });
 
         jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,6 +209,10 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
         md.eliminarMateria(Integer.parseInt(id));
         
     }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+     
+    }//GEN-LAST:event_jbSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

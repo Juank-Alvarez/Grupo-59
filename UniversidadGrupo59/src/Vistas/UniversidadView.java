@@ -88,6 +88,11 @@ public class UniversidadView extends javax.swing.JFrame {
         jm3.setText("Administracion");
 
         jmManejoInscripcion.setText("Manejo Inscripcion");
+        jmManejoInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmManejoInscripcionActionPerformed(evt);
+            }
+        });
         jm3.add(jmManejoInscripcion);
 
         jmManipulaciondeNotas.setText("Manipulacion de notas");
@@ -108,6 +113,11 @@ public class UniversidadView extends javax.swing.JFrame {
         jMenuBar1.add(jm4);
 
         jmbSalir.setText("Salir");
+        jmbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmbSalirActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jmbSalir);
 
         setJMenuBar(jMenuBar1);
@@ -138,6 +148,20 @@ public class UniversidadView extends javax.swing.JFrame {
     private void jmManipulaciondeNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmManipulaciondeNotasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jmManipulaciondeNotasActionPerformed
+
+    private void jmbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmbSalirActionPerformed
+      
+    }//GEN-LAST:event_jmbSalirActionPerformed
+
+    private void jmManejoInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmManejoInscripcionActionPerformed
+        
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        ManejoDeInscripciones bpn=new ManejoDeInscripciones();
+        bpn.setVisible(true);
+        Escritorio.add(bpn);
+        Escritorio.moveToFront(bpn);
+    }//GEN-LAST:event_jmManejoInscripcionActionPerformed
 
     /**
      * @param args the command line arguments
