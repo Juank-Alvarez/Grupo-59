@@ -53,7 +53,6 @@ public class UniversidadView extends javax.swing.JFrame {
         jMenuBar2.add(jMenu4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 500));
 
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
@@ -67,8 +66,18 @@ public class UniversidadView extends javax.swing.JFrame {
         );
 
         jm1.setText("Alumno");
+        jm1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm1ActionPerformed(evt);
+            }
+        });
 
         jmFormularioAlumno.setText("Formulario Alumno");
+        jmFormularioAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmFormularioAlumnoActionPerformed(evt);
+            }
+        });
         jm1.add(jmFormularioAlumno);
 
         jMenuBar1.add(jm1);
@@ -162,6 +171,20 @@ public class UniversidadView extends javax.swing.JFrame {
         Escritorio.add(bpn);
         Escritorio.moveToFront(bpn);
     }//GEN-LAST:event_jmManejoInscripcionActionPerformed
+
+    private void jm1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jm1ActionPerformed
+
+    private void jmFormularioAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmFormularioAlumnoActionPerformed
+        
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        GestiónAlumnosView bpn=new GestiónAlumnosView();
+        bpn.setVisible(true);
+        Escritorio.add(bpn);
+        Escritorio.moveToFront(bpn);
+    }//GEN-LAST:event_jmFormularioAlumnoActionPerformed
 
     /**
      * @param args the command line arguments
