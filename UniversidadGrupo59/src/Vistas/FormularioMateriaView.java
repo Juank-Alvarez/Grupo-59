@@ -211,11 +211,10 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-<<<<<<< Updated upstream
+
         dispose();
-=======
-     System.exit(WIDTH);
->>>>>>> Stashed changes
+
+
     }//GEN-LAST:event_jbSalirActionPerformed
 
 
