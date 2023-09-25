@@ -117,6 +117,11 @@ public class UniversidadView extends javax.swing.JFrame {
         jm4.setText("Consultas");
 
         jmAlumnosporMateria.setText("Alumnos por Materia");
+        jmAlumnosporMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAlumnosporMateriaActionPerformed(evt);
+            }
+        });
         jm4.add(jmAlumnosporMateria);
 
         jMenuBar1.add(jm4);
@@ -185,6 +190,15 @@ public class UniversidadView extends javax.swing.JFrame {
         Escritorio.add(bpn);
         Escritorio.moveToFront(bpn);
     }//GEN-LAST:event_jmFormularioAlumnoActionPerformed
+
+    private void jmAlumnosporMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAlumnosporMateriaActionPerformed
+         Escritorio.removeAll();
+        Escritorio.repaint();
+        ConsultaAlumnosPorMateria bpn=new ConsultaAlumnosPorMateria();
+        bpn.setVisible(true);
+        Escritorio.add(bpn);
+        Escritorio.moveToFront(bpn);
+    }//GEN-LAST:event_jmAlumnosporMateriaActionPerformed
 
     /**
      * @param args the command line arguments
