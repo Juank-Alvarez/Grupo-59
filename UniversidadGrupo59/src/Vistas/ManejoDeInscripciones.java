@@ -166,8 +166,10 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
         materias=(ArrayList<Materia>) inscd.obtenerMateriasNoCursadas(selec.getIdAlumno());
         if(jrbMateriasnoInscriptas.isSelected()){
             for(Materia m: materias){
+                jtIncripciones.setModel(model);
                 model.addRow(new Object[]{m.getIdMateria(),m.getNombre(),m.getAnioMateria()});
             }
+            
         }
     }//GEN-LAST:event_jrbMateriasnoInscriptasActionPerformed
 
