@@ -220,5 +220,12 @@ private void cargarCombo(){
     }
     
 }
+private void borrarFilasTabla(){
+    int indice=model.getRowCount()-1;
+    
+    for (int i= indice;i>=0;i--){
+        model.removeRow(i);
+    }
+}
 
 }
