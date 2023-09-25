@@ -50,7 +50,7 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Dni", "Apellido", "Nombre"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
