@@ -53,6 +53,7 @@ public class UniversidadView extends javax.swing.JFrame {
         jMenuBar2.add(jMenu4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 500));
 
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
@@ -160,7 +161,15 @@ public class UniversidadView extends javax.swing.JFrame {
     }//GEN-LAST:event_jmFormularioMateriaActionPerformed
 
     private void jmManipulaciondeNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmManipulaciondeNotasActionPerformed
-        // TODO add your handling code here:
+       
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        CargaDeNotas bpn=new CargaDeNotas();
+        bpn.setVisible(true);
+        Escritorio.add(bpn);
+        Escritorio.moveToFront(bpn);
+        
+        
     }//GEN-LAST:event_jmManipulaciondeNotasActionPerformed
 
     private void jmbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmbSalirActionPerformed
