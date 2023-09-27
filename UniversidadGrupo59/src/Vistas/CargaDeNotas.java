@@ -4,6 +4,9 @@
  */
 package Vistas;
 
+import accesoADatos.AlumnoData;
+import entidades.Alumno;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -33,7 +36,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbAlumnos = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTCargaNotas = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -47,8 +50,13 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Seleccione un Alumno");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbAlumnosActionPerformed(evt);
+            }
+        });
 
+        jTCargaNotas.setAutoCreateColumnsFromModel(false);
         jTCargaNotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -89,7 +97,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(50, 50, 50))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
@@ -105,7 +113,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
@@ -123,15 +131,19 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbAlumnosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBSalir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTCargaNotas;
+    private javax.swing.JComboBox<Alumno> jcbAlumnos;
     // End of variables declaration//GEN-END:variables
 
  private void armarCabecera() {
@@ -142,6 +154,17 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         jTCargaNotas.setModel(model);
     }
 
+ private void cargarCombo() {
+
+        AlumnoData ad = new AlumnoData();
+        ArrayList<Alumno> alumnos = new ArrayList<>();
+        alumnos = (ArrayList<Alumno>) ad.listarAlumnos();
+
+        for (Alumno alu : alumnos) {
+            jcbAlumnos.addItem(alu);
+        }
+
+    }
 
 
 
