@@ -107,14 +107,14 @@ public class MateriaData {
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
                //mostrar solo año?
-                materia.setAnioMateria(rs.getInt("anioMateria"));
+                materia.setAnioMateria(rs.getInt("año"));
                 materia.setActivo(true);
                 
                 materias.add(materia);
              }
             ps.close();
         }catch (SQLException ex){
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia"+ex);
         }
         return materias;
         }

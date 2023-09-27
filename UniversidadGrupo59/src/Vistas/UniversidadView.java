@@ -1,18 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Vistas;
 
-/**
- *
- * @author Juan
- */
+import javax.swing.JOptionPane;
+
+
 public class UniversidadView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form UniversidadView
-     */
+   
     public UniversidadView() {
         initComponents();
     }
@@ -53,7 +47,6 @@ public class UniversidadView extends javax.swing.JFrame {
         jMenuBar2.add(jMenu4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 500));
 
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
@@ -128,6 +121,11 @@ public class UniversidadView extends javax.swing.JFrame {
         jMenuBar1.add(jm4);
 
         jmbSalir.setText("Salir");
+        jmbSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmbSalirMouseClicked(evt);
+            }
+        });
         jmbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmbSalirActionPerformed(evt);
@@ -209,6 +207,10 @@ public class UniversidadView extends javax.swing.JFrame {
         Escritorio.moveToFront(bpn);
     }//GEN-LAST:event_jmAlumnosporMateriaActionPerformed
 
+    private void jmbSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmbSalirMouseClicked
+        cerrar();
+    }//GEN-LAST:event_jmbSalirMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -263,4 +265,17 @@ public class UniversidadView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmManipulaciondeNotas;
     private javax.swing.JMenu jmbSalir;
     // End of variables declaration//GEN-END:variables
+
+
+    public void cerrar() {
+        String botones[] = {"Cerrar", "Cancelar"};
+        int eleccion = JOptionPane.showOptionDialog(this, "¿Desea cerrar la aplicación?", "Título", 0, 0, null, botones, this);
+        if (eleccion == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        } else if (eleccion == JOptionPane.NO_OPTION) {
+            System.out.println("Se canceló el cierre.");
+        }
+    }
 }
+
+
