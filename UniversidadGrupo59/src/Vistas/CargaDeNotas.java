@@ -201,12 +201,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         modelo.addColumn("Nombre");
         modelo.addColumn("Nota");
         
-//            filaCabecera.add("Codigo");
-//            filaCabecera.add("Nombre");
-//            filaCabecera.add("Nota");
-//            for (Object it: filaCabecera){
-//                modelo.addColumn(it);
-//            }
+
         
         jTCargaNotas.setModel(modelo);
         
@@ -257,22 +252,6 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
             modelo.removeRow(i);
         }
     }
- 
-//    private void CargarTabla() {
-//        InscripcionData insc = new InscripcionData();
-//        ArrayList<Inscripcion> lista = new ArrayList<>();
-//        ArrayList<Materia> mate=new ArrayList();
-//        Alumno alu = new Alumno();
-//        Alumno alumno = (Alumno) jcbAlumnos.getSelectedItem();
-//        int id = alumno.getIdAlumno();
-//        mate=(ArrayList<Materia>) insc.obtenerMateriasCursadas(id);
-//        lista = (ArrayList<Inscripcion>) insc.obtenerInscripcionesPorAlumno(id);
-//        
-//        for (Materia nota : mate) {
-//            
-//            modelo.addRow(new Object[]{nota.getIdMateria(), nota.getNombre(),});
-//
-//        }
-//    }
+
 
 }
