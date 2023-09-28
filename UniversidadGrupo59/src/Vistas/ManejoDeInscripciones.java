@@ -208,6 +208,8 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
             for (Materia m : lista) {
                 model.addRow(new Object[]{m.getIdMateria(), m.getNombre(), m.getAnioMateria()});
             }
+        
+        
         }
     }//GEN-LAST:event_jrbMateriasInscriptasActionPerformed
 
@@ -248,7 +250,9 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
-        // TODO add your handling code here:
+       borrarFilasTabla();
+       jrbMateriasInscriptas.setSelected(false);
+       jrbMateriasnoInscriptas.setSelected(false);
     }//GEN-LAST:event_jcbAlumnosActionPerformed
 
 

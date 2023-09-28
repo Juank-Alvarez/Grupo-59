@@ -215,16 +215,17 @@ public class InscripcionData {
 
       public List<Alumno> obtenerAlumnosXMateria(int idMateria) {
         ArrayList<Alumno> alumnosMateria = new ArrayList<>();
-        String sql = "SELECT a.idAlumno, a.dni, a.apellido, a.nombre, fechaNacimiento, estado "
+          String sql = "SELECT a.idAlumno, a.dni, a.nombre, a.apellido, a.fechaNacimiento, a.estado "
                 + "FROM inscripcion i, alumno a WHERE i.idAlumno = a.idAlumno AND idMateria = ? AND a.estado = 1";
-        try {
-            PreparedStatement ps = con.prepareCall(sql);
+          try {
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idMateria);
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Alumno alumno = new Alumno();
                 alumno.setIdAlumno(rs.getInt("idAlumno"));
+                alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
@@ -233,7 +234,7 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla" + ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla");
         }
         return alumnosMateria;
     }

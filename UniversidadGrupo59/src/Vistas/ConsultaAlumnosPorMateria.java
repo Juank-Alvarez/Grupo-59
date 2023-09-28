@@ -128,7 +128,8 @@ public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jCAlumnosPorMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCAlumnosPorMateriaActionPerformed
-       cargarTabla();
+      borrarFilasTabla();
+        cargarTabla();
     }//GEN-LAST:event_jCAlumnosPorMateriaActionPerformed
 
 
@@ -170,12 +171,13 @@ private void armarCabecera() {
 
     private void cargarTabla() {
 
-        ArrayList<Alumno> alumnos = new ArrayList<>();
+        List<Alumno> alumnos = new ArrayList<>();
         InscripcionData insc = new InscripcionData();
         Materia mat = new Materia();
         mat = (Materia) jCAlumnosPorMateria.getSelectedItem();
-        int idMateriaSelec = mat.getIdMateria();
-        alumnos = (ArrayList<Alumno>) insc.obtenerAlumnosXMateria(idMateriaSelec);
+       
+        int idMateria = mat.getIdMateria();
+        alumnos = (ArrayList<Alumno>) insc.obtenerAlumnosXMateria(idMateria);
 
              for (Alumno alumno : alumnos) {
             model.addRow(new Object[]{
@@ -185,18 +187,24 @@ private void armarCabecera() {
                 alumno.getNombre()
             });
 
-            
-        }
+            }
 
+    }
+  
+    private void borrarFilasTabla() {
+        int indice = model.getRowCount() - 1;
+
+        for (int i = indice; i >= 0; i--) {
+            model.removeRow(i);
     
     
-    } 
     
 }
-    
+
+    }   
 
      
-     
+}  
      
     
      
