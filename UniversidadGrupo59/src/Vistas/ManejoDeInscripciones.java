@@ -47,7 +47,7 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
         jrbMateriasInscriptas = new javax.swing.JRadioButton();
         jrbMateriasnoInscriptas = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtInscripciones = new javax.swing.JTable();
+        jTCargaNotas = new javax.swing.JTable();
         jbInscribir = new javax.swing.JButton();
         jbAnularInscripcion = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
@@ -80,7 +80,7 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jtInscripciones.setModel(new javax.swing.table.DefaultTableModel(
+        jTCargaNotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -91,7 +91,7 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtInscripciones);
+        jScrollPane1.setViewportView(jTCargaNotas);
 
         jbInscribir.setText("Inscribir");
         jbInscribir.addActionListener(new java.awt.event.ActionListener() {
@@ -217,11 +217,11 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
         Materia materia = new Materia();
         Alumno alumno = (Alumno) jcbAlumnos.getSelectedItem();
         Inscripcion inscripcion = new Inscripcion();
-        int filaseleccionada = jtInscripciones.getSelectedRow();
+        int filaseleccionada = jTCargaNotas.getSelectedRow();
         if (filaseleccionada != -1) {
-            materia.setIdMateria((Integer) jtInscripciones.getValueAt(filaseleccionada, 0));
-            materia.setNombre((String) jtInscripciones.getValueAt(filaseleccionada, 1));
-            materia.setAnioMateria((Integer) jtInscripciones.getValueAt(filaseleccionada, 2));
+            materia.setIdMateria((Integer) jTCargaNotas.getValueAt(filaseleccionada, 0));
+            materia.setNombre((String) jTCargaNotas.getValueAt(filaseleccionada, 1));
+            materia.setAnioMateria((Integer) jTCargaNotas.getValueAt(filaseleccionada, 2));
             inscripcion.setAlumno(alumno);
             inscripcion.setMateria(materia);
             inscripcion.setNota(0);
@@ -234,9 +234,9 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
         InscripcionData inscd = new InscripcionData();
         int idmateria, idalumno;
         Alumno alumno = (Alumno) jcbAlumnos.getSelectedItem();
-        int filaseleccionada = jtInscripciones.getSelectedRow();
+        int filaseleccionada = jTCargaNotas.getSelectedRow();
         if (filaseleccionada != -1) {
-            idmateria = (Integer) jtInscripciones.getValueAt(filaseleccionada, 0);
+            idmateria = (Integer) jTCargaNotas.getValueAt(filaseleccionada, 0);
             idalumno = alumno.getIdAlumno();
             inscd.borrarInscripcionMateriaAlumno(idalumno, idmateria);
         }
@@ -258,13 +258,13 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTCargaNotas;
     private javax.swing.JButton jbAnularInscripcion;
     private javax.swing.JButton jbInscribir;
     private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<Alumno> jcbAlumnos;
     private javax.swing.JRadioButton jrbMateriasInscriptas;
     private javax.swing.JRadioButton jrbMateriasnoInscriptas;
-    private javax.swing.JTable jtInscripciones;
     // End of variables declaration//GEN-END:variables
 
     private void armarCabecera() {
@@ -272,7 +272,7 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
         model.addColumn("Id");
         model.addColumn("Nombre");
         model.addColumn("Año");
-        jtInscripciones.setModel(model);
+        jTCargaNotas.setModel(model);
     }
 
     private void cargarCombo() {

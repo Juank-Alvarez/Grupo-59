@@ -1,6 +1,7 @@
 
 package accesoADatos;
 
+import entidades.Alumno;
 import entidades.Materia;
 import java.sql.*;
 import java.util.ArrayList;
@@ -118,4 +119,22 @@ public class MateriaData {
         }
         return materias;
         }
+     
+     public String buscarNombreMateria(int idMateria){
+        String sql="SELECT nombre FROM materia WHERE idMateria = ? ";
+        String materia="";
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1,idMateria);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+                materia=rs.getString("nombre");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se pudo acceder");
+        }
+        return materia;
+    }
 }

@@ -87,7 +87,7 @@ public class AlumnoData {
     }
     
     public Alumno buscarAlumno(int id){
-        String sql="SELECT dni, apellido, nombre, fechaNacimiento FROM alumno WHERE idAlumno = ? AND estado = 1";
+        String sql="SELECT dni, apellido, nombre, fechaNacimiento, estado FROM alumno WHERE idAlumno = ? ";
         Alumno alumno= null;
         
         try {
@@ -105,7 +105,7 @@ public class AlumnoData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se pudo acceder");
+            JOptionPane.showMessageDialog(null, "No se pudo acceder"+ex);
         }
         return alumno;
         
