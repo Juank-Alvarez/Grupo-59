@@ -23,6 +23,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
     public CargaDeNotas() {
         initComponents();
         armarCabecera();
+        cargarCombo();
     }
 
     /**

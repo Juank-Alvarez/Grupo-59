@@ -248,7 +248,8 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
-        // TODO add your handling code here:
+        // TODO addborrarFilasTabla()
+        borrarFilasTabla();
     }//GEN-LAST:event_jcbAlumnosActionPerformed
 
 
