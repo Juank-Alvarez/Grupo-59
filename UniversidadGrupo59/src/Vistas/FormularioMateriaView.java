@@ -5,6 +5,7 @@ import accesoADatos.Conexion;
 import accesoADatos.MateriaData;
 import entidades.Materia;
 import java.sql.Connection;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 public class FormularioMateriaView extends javax.swing.JInternalFrame {
@@ -47,9 +48,20 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Estado");
 
+        jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtNombreKeyTyped(evt);
+            }
+        });
+
         jtAño.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtAñoActionPerformed(evt);
+            }
+        });
+        jtAño.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtAñoKeyTyped(evt);
             }
         });
 
@@ -173,6 +185,7 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
+        try{
         Materia mate=new Materia();
         MateriaData md=new MateriaData();
         mate = md.buscarMateria(Integer.parseInt(jtCodigo.getText()));
@@ -183,7 +196,9 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
                 jrbEstado.setSelected(true);
             }else jrbEstado.setSelected(false);
         }
-        
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un numero valido");
+        }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
@@ -196,19 +211,40 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
-        Materia mate=new Materia();
-        MateriaData md=new MateriaData();
-        mate.setNombre(jtNombre.getText());
-        mate.setAnioMateria(Integer.parseInt(jtAño.getText()));
-        mate.setActivo(jrbEstado.isSelected());
-        md.guardarMatera(mate);
+
+        try {
+            if (jtNombre.getText().isEmpty() || jtCodigo.getText().isEmpty() || jtAño.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "no puede haber campos vacios");
+                return;
+            }
+            if ((verificarString(jtNombre.getText())) == true) {
+                Materia mate = new Materia();
+                MateriaData md = new MateriaData();
+                mate.setNombre(jtNombre.getText());
+                mate.setAnioMateria(Integer.parseInt(jtAño.getText()));
+                mate.setActivo(jrbEstado.isSelected());
+                md.guardarMatera(mate);
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un nombre valido");
+            }
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un codigo valido");
+        }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
+        try{
+        if (jtNombre.getText().isEmpty() || jtCodigo.getText().isEmpty() || jtAño.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "no puede haber campos vacios");
+                return;
+            }
         MateriaData md=new MateriaData();
         String id=jtCodigo.getText();
         md.eliminarMateria(Integer.parseInt(id));
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un codigo valido");
+        }
         
     }//GEN-LAST:event_jbEliminarActionPerformed
 
@@ -218,6 +254,17 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombreKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
+            evt.consume();
+    }//GEN-LAST:event_jtNombreKeyTyped
+
+    private void jtAñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtAñoKeyTyped
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9') evt.consume();
+    }//GEN-LAST:event_jtAñoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -236,4 +283,17 @@ public class FormularioMateriaView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtCodigo;
     private javax.swing.JTextField jtNombre;
     // End of variables declaration//GEN-END:variables
+private boolean verificarString(String texto){
+    if(texto.isEmpty()){
+        return false;
+    }
+    for(int i=0; i<texto.charAt(i);i++){
+        char letra=texto.charAt(i);
+        if((letra<65 || letra>90) && (letra< 97 || letra> 122)){
+            return false;
+        }
+    }
+    return true;
+}
+
 }

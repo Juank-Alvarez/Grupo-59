@@ -21,6 +21,7 @@ public class GestiónAlumnosView extends javax.swing.JInternalFrame {
      */
     public GestiónAlumnosView() {
         initComponents();
+        
     }
 
     /**
@@ -71,10 +72,34 @@ public class GestiónAlumnosView extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Fecha de Nacimiento");
 
+        jtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtDniKeyTyped(evt);
+            }
+        });
+
+        jtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtApellidoKeyTyped(evt);
+            }
+        });
+
+        jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtNombreKeyTyped(evt);
+            }
+        });
+
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbBuscarActionPerformed(evt);
+            }
+        });
+
+        jdFechaNacimiento.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jdFechaNacimientoPropertyChange(evt);
             }
         });
 
@@ -210,39 +235,39 @@ public class GestiónAlumnosView extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
+
         AlumnoData ad = new AlumnoData();
         Alumno alu = null;
-        try {
 
-            if (jtNombre.getText().isEmpty() || jtApellido.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "no puede haber campos vacios");
-                return;
-            }
+        if (jtNombre.getText().isEmpty() || jtApellido.getText().isEmpty() || jdFechaNacimiento.getDate() == null || jtDni.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "no puede haber campos vacios");
+            return;
+        }
+        try {
             java.util.Date sfecha = jdFechaNacimiento.getDate();
             LocalDate fechaNac = sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            
-            Integer dni = Integer.parseInt(jtDni.getText());
-            alu = ad.buscarAlumnoPorDni(dni);
-            if(alu==null){
-                alu=new Alumno();
-                alu.setDni(dni);
-                alu.setNombre(jtNombre.getText());
-                alu.setApellido(jtApellido.getText());
-                alu.setFechaNac(fechaNac);
-                alu.setActivo(jrEstado.isSelected());
-                ad.guardarAlumno(alu);
-            }else {
-                alu.setDni(dni);
-                alu.setNombre(jtNombre.getText());
-                alu.setApellido(jtApellido.getText());
-                alu.setFechaNac(fechaNac);
-                alu.setActivo(jrEstado.isSelected());
-                ad.modificarAlumno(alu);
-            }
 
+                Integer dni = Integer.parseInt(jtDni.getText());
+                alu = ad.buscarAlumnoPorDni(dni);
+                if (alu == null) {
+                    alu = new Alumno();
+                    alu.setDni(dni);
+                    alu.setNombre(jtNombre.getText());
+                    alu.setApellido(jtApellido.getText());
+                    alu.setFechaNac(fechaNac);
+                    alu.setActivo(jrEstado.isSelected());
+                    ad.guardarAlumno(alu);
+                } else {
+                    alu.setDni(dni);
+                    alu.setNombre(jtNombre.getText());
+                    alu.setApellido(jtApellido.getText());
+                    alu.setFechaNac(fechaNac);
+                    alu.setActivo(jrEstado.isSelected());
+                    ad.modificarAlumno(alu);
+                }
 
         } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un dni valido");
+            JOptionPane.showMessageDialog(this, "Debe ingresar un numero valido");
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
@@ -269,13 +294,52 @@ public class GestiónAlumnosView extends javax.swing.JInternalFrame {
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
+        
+
+        if (jtNombre.getText().isEmpty() || jtApellido.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "no puede haber campos vacios");
+                return;
+        }
+        try{
+        
         AlumnoData ad = new AlumnoData();
         Alumno alu = new Alumno();
         Integer dni=Integer.parseInt(jtDni.getText()); 
+
         alu=ad.buscarAlumnoPorDni(dni);
+        if(alu==null){
+            JOptionPane.showMessageDialog(this,"No existe el alumno");
+            return;
+        }
         ad.eliminarAlumno(alu.getIdAlumno());
-        
+        }catch(NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un numero valido");
+        }
     }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jdFechaNacimientoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdFechaNacimientoPropertyChange
+
+//        if(jdFechaNacimiento.getDate()!=null){
+//            LocalDate fecha=jdFechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//        }
+    }//GEN-LAST:event_jdFechaNacimientoPropertyChange
+
+    private void jtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtApellidoKeyTyped
+
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
+            evt.consume();
+    }//GEN-LAST:event_jtApellidoKeyTyped
+
+    private void jtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDniKeyTyped
+
+    }//GEN-LAST:event_jtDniKeyTyped
+
+    private void jtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombreKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
+            evt.consume();
+    }//GEN-LAST:event_jtNombreKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -298,4 +362,19 @@ public class GestiónAlumnosView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtDni;
     private javax.swing.JTextField jtNombre;
     // End of variables declaration//GEN-END:variables
+
+private boolean verificarString(String texto){
+    if(texto.isEmpty()){
+        return false;
+    }
+    for(int i=0; i<texto.charAt(i);i++){
+        char letra=texto.charAt(i);
+        if((letra<65 || letra>90) && (letra< 97 || letra> 122)){
+            return false;
+        }
+    }
+    return true;
 }
+
+}
+

@@ -20,8 +20,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel model = new DefaultTableModel();
-
+    private DefaultTableModel model = new DefaultTableModel(){
+        public boolean isCellEditable(int fila, int columna){
+            return false;
+        }
+    };
+ 
     /**
      * Creates new form ManejoDeInscripciones
      */
@@ -249,6 +253,8 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
 
     private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
         // TODO addborrarFilasTabla()
+        jrbMateriasnoInscriptas.setSelected(false);
+        jrbMateriasInscriptas.setSelected(false);
         borrarFilasTabla();
     }//GEN-LAST:event_jcbAlumnosActionPerformed
 

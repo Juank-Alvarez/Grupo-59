@@ -20,7 +20,14 @@ import javax.swing.table.DefaultTableModel;
 
 public class CargaDeNotas extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel modelo = new DefaultTableModel();
+    private DefaultTableModel modelo = new DefaultTableModel(){
+        public boolean isCellEditable(int fila, int columna){
+            if(columna==2){
+                return true;
+            }
+            return false;
+        }
+    };
     private ArrayList<Materia> listaM;
 //    private ArrayList<Alumno> listaA;
     private MateriaData mData;

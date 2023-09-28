@@ -12,7 +12,11 @@ import java.util.List;
 
 public class ConsultaAlumnosPorMateria extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel model = new DefaultTableModel();
+    private DefaultTableModel model = new DefaultTableModel(){
+        public boolean isCellEditable(int fila, int columna){
+            return false;
+        }
+    };
     
     private List<Materia> mater;
     private MateriaData mt;
